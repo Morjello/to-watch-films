@@ -1,8 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-// import TourReducer from "./features/tourSlice";
+import themeSlice from "./slices/themeSlice";
 
-export default configureStore({
+const store = configureStore({
   reducer: {
-    // tour: TourReducer,
+    theme: themeSlice,
   },
 });
+
+export type RootState = ReturnType<typeof store.getState>;
+export const AppDispatch = typeof store.dispatch;
+
+export default store;
