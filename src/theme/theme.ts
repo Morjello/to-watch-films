@@ -1,6 +1,7 @@
-import ITheme from "../interfaces/styled";
+import { DefaultTheme } from "styled-components";
+import { ITheme, ThemeEnum } from "../interfaces/styled";
 
-const baseTheme: ITheme = {
+export const baseTheme: Omit<ITheme, 'type'> = {
   colors: {
     primary: '#7986cb',
     secondary: '#2b2b2b',
@@ -38,4 +39,24 @@ const baseTheme: ITheme = {
   },
 }
 
-export default baseTheme;
+export const lightTheme: DefaultTheme = {
+  ...baseTheme,
+  type: ThemeEnum.light,
+
+  colors: {
+    ...baseTheme.colors,
+    bg: '#E5E4E8',
+    font: '#19191B',
+  },
+}
+
+export const darkTheme: DefaultTheme = {
+  ...baseTheme,
+  type: ThemeEnum.dark,
+
+  colors: {
+    ...baseTheme.colors,
+    bg: '#19191B',
+    font: '#E5E4E8',
+  },
+}

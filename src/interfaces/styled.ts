@@ -1,4 +1,9 @@
-interface ITheme {
+export enum ThemeEnum  {
+  light = "light",
+  dark = "dark"
+}
+
+export interface ITheme {
   colors: {
     primary: string
     secondary: string
@@ -32,5 +37,3 @@ interface ITheme {
     modal: number
   },
 }
-
-export default ITheme;
