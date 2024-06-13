@@ -1,11 +1,13 @@
-import BasicButton from '../UI/basicButton/BasicButton';
+import Home from '../Home/Home';
+import { Button, ButtonSize } from '../UI/basicButton/BasicButton';
 import Header from './../Header/Header';
 
 const App = () => {
 	return (
 		<>
 			<Header />
-			<BasicButton children="Кликни" />
+			<Home />
+			<Button size={ButtonSize.MD}>Кликни</Button>
 		</>
 	);
 };

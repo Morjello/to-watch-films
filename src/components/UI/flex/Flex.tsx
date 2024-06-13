@@ -1,17 +1,10 @@
-import { FC } from 'react';
 import styled from 'styled-components';
 
 interface IStyledFlex {
-	direction: string;
+	direction?: string;
 }
 
-const StyledFlex = styled.div`
+export const Flex = styled.div<IStyledFlex>`
 	display: flex;
 	align-items: center;
 `;
-
-const Flex: FC = (props) => {
-	return <StyledFlex {...props} />;
-};
-
-export default Flex;
