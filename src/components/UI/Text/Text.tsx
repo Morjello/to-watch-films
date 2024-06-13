@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import styled, { css } from 'styled-components';
 
 const normalFontStyles = css`
@@ -8,15 +7,20 @@ const normalFontStyles = css`
 `;
 
 interface TextProps {
-	primary: boolean;
+	primary?: boolean;
 }
-const StyledNormalText = styled.p<TextProps>`
+
+export const Text = styled.p<TextProps>`
 	${normalFontStyles};
-	color: ${({ primary }) => (primary ? '#424242' : '4b4b4b')};
+	color: ${({ theme }) => theme.colors.primary};
 `;
 
-const Text: FC = () => {
-	return <StyledNormalText primary />;
-};
+export const TextLoading = styled.p<TextProps>`
+	${normalFontStyles};
+	color: ${({ theme }) => theme.colors.secondary};
+`;
 
-export default Text;
+export const TextError = styled.p<TextProps>`
+	${normalFontStyles};
+	color: ${({ theme }) => theme.colors.danger};
+`;

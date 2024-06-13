@@ -1,0 +1,1 @@
+export const kinoboxPopularMovies = `https://kinobox.tv/api/films/popular`;
