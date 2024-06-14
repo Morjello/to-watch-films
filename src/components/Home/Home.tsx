@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import MovieCard from '../MovieCard/MovieCard';
 import getPopularMovies from '../../store/async/kinobox/getPopularMovies';
 import { TextError, TextLoading } from '../UI/text/Text';
+import SearchForm from '../SearchForm/SearchForm';
 
 const Home = () => {
 	const dispatch = useAppDispatch();
@@ -19,6 +20,7 @@ const Home = () => {
 		<>
 			{loading && <TextLoading>Loading...</TextLoading>}
 			{error && <TextError>Loading...</TextError>}
+			<SearchForm />
 			<List
 				items={popularMovies}
 				renderItems={(item) => <MovieCard key={item.id} item={item} />}

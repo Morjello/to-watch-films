@@ -11,6 +11,7 @@ export interface ITheme {
     danger: string
     
     bg: string,
+    bgbth: string,
     font: string,
   }
 

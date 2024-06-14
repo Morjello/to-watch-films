@@ -9,16 +9,19 @@ export enum ButtonSize {
 }
 
 // Interface for button properties
-export interface ButtonProps {
+export interface StyledButtonProps {
 	size: ButtonSize;
 }
 
 // Styled-component for the button
-const StyledBasicButton = styled.button<ButtonProps>`
+const StyledButton = styled.button<StyledButtonProps>`
 	border: none;
 	cursor: pointer;
+	font-size: 16px;
+	padding: 14px;
+	border-radius: 25px;
 	color: ${({ theme }) => theme.colors.font};
-	background-color: ${({ theme }) => theme.colors.bg};
+	background-color: ${({ theme }) => theme.colors.bgbth};
 	width: ${({ size }) => {
 		switch (size) {
 			case ButtonSize.XS:
@@ -33,25 +36,33 @@ const StyledBasicButton = styled.button<ButtonProps>`
 				return '150px';
 		}
 	}};
-	padding: 15px;
-	border-radius: 15px;
+	&:hover {
+		opacity: 0.8;
+	}
 `;
 
-interface BasicButtonProps extends PropsWithChildren<ButtonProps> {
+interface ButtonProps extends PropsWithChildren<StyledButtonProps> {
+	disabled?: boolean;
 	onClick?: () => void;
+	text?: string;
 }
 
-// BasicButton component
-const BasicButton: FC<BasicButtonProps> = ({
+// Button component
+export const Button: FC<ButtonProps> = ({
 	children,
 	size = ButtonSize.MD,
 	onClick,
 }) => (
-	<StyledBasicButton size={size} onClick={onClick}>
+	<StyledButton size={size} onClick={onClick}>
 		{children}
-	</StyledBasicButton>
+	</StyledButton>
 );
-
-// Export the Button component
-
-export const Button = BasicButton;
+export const SubmitButton: FC<ButtonProps> = ({
+	children,
+	size = ButtonSize.MD,
+	onClick,
+}) => (
+	<StyledButton size={size} onClick={onClick}>
+		{children}
+	</StyledButton>
+);

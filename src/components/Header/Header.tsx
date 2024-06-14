@@ -1,8 +1,15 @@
-import React from 'react';
 import { FC } from 'react';
+import { Logo } from '../UI/logo/Logo';
+import ThemeSwitcher from '../../theme/ThemeSwitcher/ThemeSwitcher';
+import { StyledHeader } from './StyledHeader';
 
 const Header: FC = () => {
-	return <div></div>;
+	return (
+		<StyledHeader>
+			<Logo>Logo</Logo>
+			<ThemeSwitcher />
+		</StyledHeader>
+	);
 };
 
 export default Header;

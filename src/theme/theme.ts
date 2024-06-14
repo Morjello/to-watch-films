@@ -9,6 +9,7 @@ export const baseTheme: Omit<ITheme, 'type'> = {
     danger: '#f44336 ',
     
     bg: '#E5E4E8',
+    bgbth: '#6b0280',
     font: '#19191B',
   },
 
@@ -46,6 +47,7 @@ export const lightTheme: DefaultTheme = {
   colors: {
     ...baseTheme.colors,
     bg: '#E5E4E8',
+    bgbth: '#CC99FF',
     font: '#19191B',
   },
 }
@@ -56,7 +58,8 @@ export const darkTheme: DefaultTheme = {
 
   colors: {
     ...baseTheme.colors,
-    bg: '#19191B',
+    bg: '#0d0c22',
+    bgbth: '#6b0280',
     font: '#E5E4E8',
   },
 }
