@@ -1,0 +1,12 @@
+.link {
+  min-width: 100px;
+	padding: 10px;
+	border-radius: 20px;
+	font-weight: 500;
+	text-align: center;
+}
+
+.link:active {
+  padding-bottom: 3px;
+		border-bottom: 1px solid black;
+}

@@ -7,4 +7,5 @@ interface IStyledFlex {
 export const Flex = styled.div<IStyledFlex>`
 	display: flex;
 	align-items: center;
+	justify-content: center;
 `;

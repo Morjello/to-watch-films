@@ -1,14 +1,17 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import findMovieOnName, { IKinopoiskMovie } from "../async/kinopoisk/findNameOfMovie";
+import findMovieOnName from "../async/kinopoisk/findNameOfMovie";
+import { IKinopoiskMovie } from "../../interfaces/kinopoiskMovies";
 
 export interface IKinopoiskMovies {
   kinopoiskMovies: IKinopoiskMovie[];
+  currentMovie: IKinopoiskMovie | null;
   loading: boolean;
   error: string | null;
 }
 
 const initialState: IKinopoiskMovies = {
   kinopoiskMovies: [],
+  currentMovie: null,
   loading: false,
   error:  null,
 }
@@ -16,7 +19,11 @@ const initialState: IKinopoiskMovies = {
 const kinopoiskMoviesSlice = createSlice({
   name: 'kinopoiskMovies',
   initialState,
-  reducers: {},
+  reducers: {
+    setCurrentMovie: (state, action: PayloadAction<IKinopoiskMovie>) => {
+      state.currentMovie = action.payload;
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(findMovieOnName.pending, (state) => {
@@ -34,4 +41,5 @@ const kinopoiskMoviesSlice = createSlice({
   },
 });
 
+export const { setCurrentMovie } = kinopoiskMoviesSlice.actions;
 export default kinopoiskMoviesSlice.reducer; 

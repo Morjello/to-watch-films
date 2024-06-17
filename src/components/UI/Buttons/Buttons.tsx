@@ -6,6 +6,7 @@ export enum ButtonSize {
 	SM = 'sm',
 	MD = 'md',
 	LG = 'lg',
+	FULL = 'full',
 }
 
 // Interface for button properties
@@ -32,6 +33,8 @@ const StyledButton = styled.button<StyledButtonProps>`
 				return '150px';
 			case ButtonSize.LG:
 				return '200px';
+			case ButtonSize.FULL:
+				return '100%';
 			default:
 				return '150px';
 		}
@@ -39,6 +42,10 @@ const StyledButton = styled.button<StyledButtonProps>`
 	&:hover {
 		opacity: 0.8;
 	}
+`;
+
+const StyledWatchButton = styled(StyledButton)`
+	background-color: ${({ theme }) => theme.colors.bgwatch};
 `;
 
 interface ButtonProps extends PropsWithChildren<StyledButtonProps> {
@@ -65,4 +72,14 @@ export const SubmitButton: FC<ButtonProps> = ({
 	<StyledButton size={size} onClick={onClick}>
 		{children}
 	</StyledButton>
+);
+
+export const WatchButton: FC<ButtonProps> = ({
+	children,
+	size = ButtonSize.MD,
+	onClick,
+}) => (
+	<StyledWatchButton size={size} onClick={onClick}>
+		{children}
+	</StyledWatchButton>
 );

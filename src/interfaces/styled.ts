@@ -12,6 +12,7 @@ export interface ITheme {
     
     bg: string,
     bgbth: string,
+    bgwatch: string,
     font: string,
   }
 
