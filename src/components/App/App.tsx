@@ -1,14 +1,15 @@
-import Home from '../Home/Home';
-import { Button, ButtonSize } from '../UI/basicButton/BasicButton';
+import AppRoutes from '../../routes/Routes';
+import { Divider } from '../UI/divider/Divider';
 import Header from './../Header/Header';
+import { StyledApp } from './StyledApp';
 
 const App = () => {
 	return (
-		<>
+		<StyledApp>
 			<Header />
-			<Home />
-			<Button size={ButtonSize.MD}>Кликни</Button>
-		</>
+			<Divider />
+			<AppRoutes />
+		</StyledApp>
 	);
 };
 

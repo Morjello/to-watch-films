@@ -1,34 +1,34 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { basicError } from "../../../constants/errors";
 import { OK } from "../../../constants/statuses";
 import { kinoboxPopularMovies } from "../../../services/kinobox/data";
 
 export interface IPopularMovie {
-  id: string | null;
-  title: string | null;
-  alternativeTitle: string | null;
-  type: string | null;
-  year: number | null;
-  rating: string | null | undefined;
+  id: string;
+  title: string;
+  alternativeTitle: string;
+  type: string;
+  year: number;
+  rating: string;
   posterUrl: string;
-  countries: string[] | null;
-  genres: string[] | null;
+  countries: string[];
+  genres: string[];
 }
 
-const getPopularMovies = createAsyncThunk(
+const getPopularMovies = createAsyncThunk<IPopularMovie[], undefined, {rejectValue: string}>(
   'movie/getPopularMovie',
-  async (_, {rejectWithValue}) => {
+  async (_, { rejectWithValue }) => {
     try {
       const response = await axios.get<IPopularMovie[]>(kinoboxPopularMovies);
 
       if (response.status !== OK) {
-        throw new Error(basicError)
+        throw new AxiosError(basicError);
       }
 
       return response.data;
     } catch (error) {
-      return rejectWithValue(error)
+      return rejectWithValue(error ='');
     }
   }
 );

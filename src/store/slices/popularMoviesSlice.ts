@@ -1,15 +1,18 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import getPopularMovies, { IPopularMovie } from "../async/kinobox/getPopularMovies";
-interface IPopularMovies {
+
+export interface IPopularMovies {
   popularMovies: IPopularMovie[];
   loading: boolean;
   error: string | null;
 }
+
 const initialState: IPopularMovies = {
   popularMovies: [],
   loading: false,
   error:  null,
 }
+
 const popularMoviesSlice = createSlice({
   name: 'popularMovies',
   initialState,
@@ -31,4 +34,4 @@ const popularMoviesSlice = createSlice({
   },
 });
 
-export default popularMoviesSlice.reducer;
+export default popularMoviesSlice.reducer; 

@@ -6,13 +6,16 @@ interface StyledTitleProps {
 
 export const Title1 = styled.h1<StyledTitleProps>`
 	font-size: 28px;
+	color: ${({ theme }) => theme.colors.font};
 	font-weight: ${({ weight = 700 }) => weight};
 `;
 export const Title2 = styled.h1<StyledTitleProps>`
 	font-size: 20px;
+	color: ${({ theme }) => theme.colors.font};
 	font-weight: ${({ weight = 700 }) => weight};
 `;
 export const Title3 = styled.h1<StyledTitleProps>`
 	font-size: 16px;
+	color: ${({ theme }) => theme.colors.font};
 	font-weight: ${({ weight = 700 }) => weight};
 `;

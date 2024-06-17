@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 const normalFontStyles = css`
-	font-size: 12px;
+	font-size: 14px;
 	line-height: 14px;
 	font-weight: 500;
 `;
