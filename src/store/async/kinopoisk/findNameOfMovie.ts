@@ -1,34 +1,29 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios, { AxiosError } from "axios";
-import { basicError } from "../../../constants/errors";
-import { OK } from "../../../constants/statuses";
-import { kinopoiskMovies } from "../../../services/kinopoisk/data";
+import { MovieQueryBuilder } from "@openmoviedb/kinopoiskdev_client";
+import kp from "../../../services/kinopoisk";
+import { IKinopoiskMovie } from "../../../interfaces/kinopoiskMovies";
+import { failedToFetchMovies, noDataFound } from "../../../constants/errors";
 
-export interface IKinopoiskMovie {
-  id: string;
-  title: string;
-  alternativeTitle: string;
-  type: string;
-  year: number;
-  rating: string;
-  posterUrl: string;
-  countries: string[];
-  genres: string[];
-}
-
-const findMovieOnName = createAsyncThunk<IKinopoiskMovie[], undefined, {rejectValue: string}>(
-  'movie/getKinopoiskMovie',
-  async (_, { rejectWithValue }) => {
+const findMovieOnName = createAsyncThunk<IKinopoiskMovie[], string, {rejectValue: string}>(
+  'movie/searchMovies',
+  async (name, { rejectWithValue }) => {
     try {
-      const response = await axios.get<IKinopoiskMovie[]>(kinopoiskMovies);
+      const queryBuilder = new MovieQueryBuilder();
+      const query = queryBuilder 
+        .query(name)
+        .paginate(1, 10)
+        .build();
 
-      if (response.status !== OK) {
-        throw new AxiosError(basicError);
+      const { data } = await kp.movie.getBySearchQuery(query);
+
+      if (data) {
+        console.log(data);
+        return data.docs;
+      } else {
+        return rejectWithValue(noDataFound);
       }
-
-      return response.data;
     } catch (error) {
-      return rejectWithValue(error ='');
+      return rejectWithValue(failedToFetchMovies);
     }
   }
 );

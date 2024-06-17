@@ -1,5 +1,4 @@
-import Home from '../Home/Home';
-import { Button, ButtonSize } from '../UI/Buttons/Buttons';
+import AppRoutes from '../../routes/Routes';
 import { Divider } from '../UI/divider/Divider';
 import Header from './../Header/Header';
 import { StyledApp } from './StyledApp';
@@ -9,8 +8,7 @@ const App = () => {
 		<StyledApp>
 			<Header />
 			<Divider />
-			<Home />
-			<Button size={ButtonSize.MD}>Кликни</Button>
+			<AppRoutes />
 		</StyledApp>
 	);
 };

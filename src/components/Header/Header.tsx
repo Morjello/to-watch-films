@@ -1,13 +1,15 @@
 import { FC } from 'react';
-import { Logo } from '../UI/logo/Logo';
 import ThemeSwitcher from '../../theme/ThemeSwitcher/ThemeSwitcher';
 import { StyledHeader } from './StyledHeader';
+import NavBar from '../NavBar/NavBar';
+import Logo from '../UI/logo/Logo';
 
 const Header: FC = () => {
 	return (
 		<StyledHeader>
-			<Logo>Logo</Logo>
+			<Logo />
 			<ThemeSwitcher />
+			<NavBar />
 		</StyledHeader>
 	);
 };

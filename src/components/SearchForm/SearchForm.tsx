@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import {
 	StyledSearchContainer,
@@ -5,28 +6,35 @@ import {
 	StyledSearchInput,
 } from './StyledSearchForm';
 import { ButtonSize, SubmitButton } from '../UI/Buttons/Buttons';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { setSearchQuery } from '../../store/slices/searchQuerySlice';
 
 interface IFormInput {
 	search: string;
 }
 
 const SearchForm = () => {
-	const { register, handleSubmit } = useForm<IFormInput>();
+	const dispatch = useAppDispatch();
+	const { searchQuery } = useAppSelector((state) => state.searchQuery);
 
-	// const onSubmit = (data: { search: string }) => {
-	//   searchParamsStore.setSearchParams(data.search);
-	//   moviesStore.getMovies(data.search);
-	// };
+	const { register, handleSubmit, setValue } = useForm<IFormInput>({
+		defaultValues: { search: searchQuery },
+	});
+
+	useEffect(() => {
+		setValue('search', searchQuery);
+	}, [searchQuery, setValue]);
+
+	const onSubmit = ({ search }: IFormInput) => {
+		dispatch(setSearchQuery(search));
+	};
 
 	return (
-		<StyledSearchForm
-			action="search"
-			// onSubmit={handleSubmit(onSubmit)}
-		>
+		<StyledSearchForm action="search" onSubmit={handleSubmit(onSubmit)}>
 			<StyledSearchContainer>
 				<StyledSearchInput
 					type="search"
-					placeholder="Фильм"
+					placeholder="Название фильма"
 					id="search"
 					{...register('search')}
 				/>
@@ -36,4 +44,4 @@ const SearchForm = () => {
 	);
 };
 
-export default SearchForm;
+export default React.memo(SearchForm);
