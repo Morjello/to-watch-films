@@ -1,4 +1,5 @@
 import AppRoutes from '../../routes/Routes';
+import Footer from '../Footer/Footer';
 import { Divider } from '../UI/divider/Divider';
 import Header from './../Header/Header';
 import { StyledApp } from './StyledApp';
@@ -9,6 +10,7 @@ const App = () => {
 			<Header />
 			<Divider />
 			<AppRoutes />
+			<Footer />
 		</StyledApp>
 	);
 };
