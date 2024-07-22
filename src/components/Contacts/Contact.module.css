@@ -1,0 +1,28 @@
+.userContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.userImage {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.username {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.telegramButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.telegramIcon {
+  width: 40px;
+  height: 40px;
+}

@@ -1,6 +1,5 @@
 import React, { ReactNode, useEffect, useRef } from 'react';
-
-import PropTypes from 'prop-types';
+import styles from './TelegramLoginButton.module.css';
 
 export interface TelegramUser {
 	id: number;
@@ -90,24 +89,10 @@ const TelegramLoginButton: React.FC<TelegramLoginButtonProps> = ({
 	]);
 
 	return (
-		<div className={className} ref={instance}>
+		<div className={`${styles.container} ${className}`} ref={instance}>
 			{children}
 		</div>
 	);
-};
-
-TelegramLoginButton.propTypes = {
-	botName: PropTypes.string.isRequired,
-	dataOnauth: PropTypes.func,
-	buttonSize: PropTypes.oneOf(['large', 'medium', 'small']),
-	cornerRadius: PropTypes.number,
-	requestAccess: PropTypes.string,
-	usePic: PropTypes.bool,
-	lang: PropTypes.string,
-	widgetVersion: PropTypes.number,
-	className: PropTypes.string,
-	children: PropTypes.node,
-	dataAuthUrl: PropTypes.string,
 };
 
 export default TelegramLoginButton;
