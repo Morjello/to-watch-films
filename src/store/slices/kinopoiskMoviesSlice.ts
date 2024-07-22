@@ -33,7 +33,7 @@ const kinopoiskMoviesSlice = createSlice({
       .addCase(findMovieOnName.fulfilled, (state, action: PayloadAction<IKinopoiskMovie[]>) => {
         state.loading = false;
         state.kinopoiskMovies = action.payload;
-      })
+      })          
       .addCase(findMovieOnName.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;

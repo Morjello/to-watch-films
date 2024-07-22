@@ -5,18 +5,26 @@ export interface IPopularMovies {
   popularMovies: IPopularMovie[];
   loading: boolean;
   error: string | null;
+  currentPage: number;
+  moviesPerPage: number;
 }
 
 const initialState: IPopularMovies = {
   popularMovies: [],
   loading: false,
   error:  null,
+  currentPage: 1,
+  moviesPerPage: 20,
 }
 
 const popularMoviesSlice = createSlice({
   name: 'popularMovies',
   initialState,
-  reducers: {},
+  reducers: {
+    setCurrentPage: (state, action: PayloadAction<number>) => {
+      state.currentPage = action.payload;
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getPopularMovies.pending, (state) => {
@@ -34,4 +42,5 @@ const popularMoviesSlice = createSlice({
   },
 });
 
+export const { setCurrentPage } = popularMoviesSlice.actions;
 export default popularMoviesSlice.reducer; 
